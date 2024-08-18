@@ -152,7 +152,7 @@ export default function milestones(selector) {
     autoResize.current = d;
   }
 
-  function render(data) {
+  function render(data, callback) {
     const widthAttribute = orientation === 'horizontal' ? 'width' : 'height';
     const marginTimeAttribute =
       orientation === 'horizontal' ? 'margin-left' : 'margin-top';
@@ -520,6 +520,10 @@ export default function milestones(selector) {
           .style('position', 'absolute');
       }
     });
+
+    if (typeof callback!="undefined") {
+      callback();
+    }
   }
 
   return api({
